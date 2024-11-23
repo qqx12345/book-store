@@ -1,0 +1,53 @@
+页面整体样式
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* 页面背景色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* 主体内容容器 */
+div {
+  text-align: center;
+  padding: 20px;
+}
+
+/* 标题样式 */
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* 添加轻微阴影 */
+}
+
+/* 按钮样式 */
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* 动画效果 */
+}
+
+button:hover {
+  background-color: #0056b3; /* 悬停时按钮变深蓝 */
+  transform: scale(1.05); /* 悬停时按钮略微放大 */
+}
+
+button:active {
+  background-color: #003f7f; /* 点击时变为更深的蓝色 */
+  transform: scale(0.95); /* 点击时按钮稍微缩小 */
+}
+
+/* 页面容器调整 */
+div > div {
+  margin-top: 30px;
+}

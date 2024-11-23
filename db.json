@@ -1,0 +1,95 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "JavaScript: The Good Parts",
+      "author": "Douglas Crockford",
+      "price": 29.99
+    },
+    {
+      "id": "2",
+      "title": "Eloquent JavaScript",
+      "author": "Marijn Haverbeke",
+      "price": 25.99
+    },
+    {
+      "id": "3",
+      "title": "You Don't Know JS",
+      "author": "Kyle Simpson",
+      "price": 32.99
+    },
+    {
+      "id": "4",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "price": 34.99
+    },
+    {
+      "id": "5",
+      "title": "JavaScript: The Definitive Guide",
+      "author": "David Flanagan",
+      "price": 39.99
+    },
+    {
+      "id": "6",
+      "title": "The Pragmatic Programmer",
+      "author": "Andy Hunt",
+      "price": 38.99
+    },
+    {
+      "id": "7",
+      "title": "Refactoring",
+      "author": "Martin Fowler",
+      "price": 36.99
+    },
+    {
+      "id": "8",
+      "title": "Design Patterns",
+      "author": "Erich Gamma",
+      "price": 42.99
+    },
+    {
+      "id": "9",
+      "title": "The Mythical Man-Month",
+      "author": "Frederick P. Brooks Jr.",
+      "price": 29.99
+    },
+    {
+      "id": "10",
+      "title": "Effective Java",
+      "author": "Joshua Bloch",
+      "price": 40.99
+    },
+    {
+      "id": "11",
+      "title": "Introduction to Algorithms",
+      "author": "Thomas H. Cormen",
+      "price": 45.99
+    },
+    {
+      "id": "12",
+      "title": "Programming Pearls",
+      "author": "Jon Bentley",
+      "price": 27.99
+    },
+    {
+      "id": "13",
+      "title": "Code Complete",
+      "author": "Steve McConnell",
+      "price": 37.99
+    },
+    {
+      "id": "14",
+      "title": "The Art of Computer Programming",
+      "author": "Donald E. Knuth",
+      "price": 99.99
+    },
+    {
+      "id": "15",
+      "title": "The Clean Coder",
+      "author": "Robert C. Martin",
+      "price": 33.99
+    }
+  ],
+  "cart": []
+}

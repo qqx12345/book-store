@@ -21,7 +21,7 @@ const useStore = create(
   }),
   {
     name: 'book-store', // localStorage 中的 key
-    partialize: (state) => ({ book: state.book }), // 仅持久化 book 状态
+    partialize: (state) => ({ book: state.book,sum:state.sum}), // 持久化 sum,book 状态
   }
   )
 );

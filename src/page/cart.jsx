@@ -68,7 +68,7 @@ export default function Cart() {
     <div className="list">
       <ul className='book-list'>
         <Display />
-        <span>总价：{sum}</span>
+        <span>总价：{sum.toFixed(2)}</span>
       </ul>
       <Clear/>
        <Pay/>

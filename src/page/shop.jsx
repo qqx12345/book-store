@@ -1,74 +1,89 @@
 import { useState, useEffect } from 'react'
 import '../App.css'
 import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import useStore from '../book.jsx'
+import { fetchbook, fetchcart, deletecart, addcart} from '../book.js'
 import { useNavigate ,Outlet, useLocation} from 'react-router-dom';
 const queryClient = new QueryClient();
 
   export default function Shop(){
     const location = useLocation()
-    const fetchData = async () => {
-        const response = await fetch('http://localhost:5000/books');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      };
       function Display() {
         const navigate = useNavigate();
-        const { data, error, isLoading } = useQuery({
-          queryKey: ['data'],
-          queryFn: fetchData, // 发起网络请求生成data
+        const { data: books, error: booksError, isLoading: booksLoading } = useQuery({
+          queryKey: ['books'],
+          queryFn: fetchbook,
           staleTime: 1000 * 60 * 5,
         });
       
-        const {book,addbook,removebook}= useStore();
+        // 获取购物车内容
+        const { data: cart, error: cartError, isLoading: cartLoading } = useQuery({
+          queryKey: ['cart'],
+          queryFn: fetchcart,
+          refetchOnWindowFocus:true,
+        });
+      
         const [checks, setChecks] = useState([]);
       
     // 初始化 checks 状态
     useEffect(() => {
-      if (data) {
-        const initialChecks = data.map((item) =>
-          book.find((b) => b.title === item.title) ? '已添加' : '添加'
+      if (books && cart) {
+        const initialChecks = books.map((item) =>
+          cart.find((b) => b.id === item.id) ? '已添加' : '添加'
         );
         setChecks(initialChecks);
       }
-    }, [data, book]);
+    }, [books,cart]);
 
 
-    useEffect(() => {
-      checks.forEach((status, index) => {
-        if (data) {
-          if (status === '已添加' && !book.find((b) => b.title === data[index].title)) {
-            addbook(data[index]);
-          } else if (status === '添加' && book.find((b) => b.title === data[index].title)) {
-            removebook(data[index]);
-          }
-        }
-      });
-      console.log(book);
-    }, [checks, data, book, addbook, removebook]);
+    // useEffect(() => {
+    //   checks.forEach((status, index) => {
+    //     if (books && cart) {
+    //       if (status === '已添加' && !cart.find((b) => b.title === books[index].title)) {
+    //         addcart(books[index]);
+    //       } else if (status === '添加' && cart.find((b) => b.title === books[index].title)) {
+    //         deletecart(index+1);
+    //       }
+    //     }
+    //   });
+    // }, [checks,books,cart]);
 
 
 
-        const  handleButtonClick = (index) => {
+    const handleButtonClick = (index) => {
+      const newStatus = checks[index] === "添加" ? "已添加" : "添加";
+      if (newStatus === "已添加") {
+        addcart(books[index]).then(() => {
           setChecks((prevChecks) => {
             const newChecks = [...prevChecks];
-            const newStatus = newChecks[index] === "添加" ? "已添加" : "添加";
             newChecks[index] = newStatus;
             return newChecks;
           });
-        };
+        }).catch((error) => {
+          console.error('Failed to add to cart:', error);
+        });
+      } else {
+        deletecart(books[index].id).then(() => {
+          setChecks((prevChecks) => {
+            const newChecks = [...prevChecks];
+            newChecks[index] = newStatus;
+            return newChecks;
+          });
+        }).catch((error) => {
+          console.error('Failed to remove from cart:', error);
+        });
+      }
+    };
+    
       
-        if (isLoading) {
+        if (booksLoading || cartLoading) {
           return <span>Loading...</span>;
         }
-        if (error) {
-          return <span>Error: {error.message}</span>;
+        if (booksError || cartError) {
+          return <span>Error: {booksError.message}</span>;
         }
         return (<>
           <ul className='book-list'>
-            {data.map((todo) => (
+            {books.map((todo) => (
               <li key={todo.id} >
                 <span onClick={()=>{navigate(`/shop/${todo.id}`)}} className='book'>{todo.title}</span>
                 {/* <Link to={`/shop/${todo.id}`}>查看详情</Link> */}

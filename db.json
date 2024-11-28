@@ -91,5 +91,67 @@
       "price": 33.99
     }
   ],
-  "cart": []
+  "cart": [],
+  "order": [
+    {
+      "0": {
+        "id": "2",
+        "title": "Eloquent JavaScript",
+        "author": "Marijn Haverbeke",
+        "price": 25.99
+      },
+      "1": {
+        "id": "3",
+        "title": "You Don't Know JS",
+        "author": "Kyle Simpson",
+        "price": 32.99
+      },
+      "2": {
+        "id": "4",
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "price": 34.99
+      },
+      "3": {
+        "id": "5",
+        "title": "JavaScript: The Definitive Guide",
+        "author": "David Flanagan",
+        "price": 39.99
+      },
+      "id": "44bb"
+    },
+    {
+      "0": {
+        "id": "2",
+        "title": "Eloquent JavaScript",
+        "author": "Marijn Haverbeke",
+        "price": 25.99
+      },
+      "1": {
+        "id": "3",
+        "title": "You Don't Know JS",
+        "author": "Kyle Simpson",
+        "price": 32.99
+      },
+      "2": {
+        "id": "4",
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "price": 34.99
+      },
+      "3": {
+        "id": "5",
+        "title": "JavaScript: The Definitive Guide",
+        "author": "David Flanagan",
+        "price": 39.99
+      },
+      "4": {
+        "id": "6",
+        "title": "The Pragmatic Programmer",
+        "author": "Andy Hunt",
+        "price": 38.99
+      },
+      "id": "7757"
+    }
+  ]
 }
